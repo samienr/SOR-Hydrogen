@@ -111,8 +111,6 @@ outlines:
           shift: [1.45px,.5py]
         - ref: matrix_inner_bottom
           shift: [1.45px,-.5py]
-        #- ref: thumb_middle_cluster
-        #  shift: [.5px,.5py]
         - ref: thumb_right_cluster
           shift: [.5px,.5py]
         - ref: thumb_right_cluster
@@ -148,7 +146,16 @@ pcbs:
         params:
           keycaps: true
           reverse: true
-          #hotswap: true
+          hotswap: false
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
       diode:
