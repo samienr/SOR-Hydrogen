@@ -159,7 +159,7 @@ pcbs:
           to: "{{row_net}}"
         adjust.shift: [0,-5]
       MCU:
-        what: seeed_xaio
+        what: xiao-ble
         where:
             ref: matrix_inner_top
             shift: [.925px,-.06py]
