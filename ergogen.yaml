@@ -1,0 +1,165 @@
+units:
+  kx: cx
+  ky: cy
+  px: kx+4
+  py: ky+4
+points:
+  zones:
+    matrix:
+      anchor.shift: [100,-100]
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        outer:
+          key:
+            splay: 10
+            column_net: "P0"
+        pinky:
+          key:
+            stagger: 3
+            column_net: "P1"
+        ring:
+          key:
+            stagger: 8
+            splay: -4.1
+            spread: 1.035kx
+            column_net: "P2"
+        middle:
+          key:
+            stagger: .25*ky
+            splay: -5
+            spread: 1.04kx
+            column_net: "P3"
+        index:
+          key:
+            stagger: -.65*ky
+            splay: -1
+            column_net: "P4"
+        inner:
+          key:
+            stagger: -.5*ky
+            column_net: "P5"
+      rows:
+        bottom:
+            row_net: "P9"
+        home:
+            row_net: "P8"
+        top:
+            row_net: "P7"
+    thumb:
+      key:
+        padding: ky
+        spread: kx
+      anchor:
+        ref: matrix_index_bottom
+        shift: [2,-28]
+      columns:
+        left:
+          key:
+            shift: [-1,0]
+            splay: -15
+            column_net: "P3"
+        middle:
+          key:
+            splay: -7.5
+            column_net: "P4"
+        right:
+          key:
+            splay: -15
+            shift: [2.6,-2]
+            column_net: "P5"
+      rows:
+        cluster:
+            row_net: "P10"
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [px,ky+2.69987980894130]
+  keys:
+    - what: rectangle
+      where: true
+      size: [kx-.5,ky-.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_top
+          shift: [-.5px,.5py]
+        - ref: matrix_outer_top
+          shift: [.2px,.5py]
+        - ref: matrix_pinky_top
+          shift: [-.4px,.5py]
+        - ref: matrix_pinky_top
+          shift: [.5px,.5py]
+        - ref: matrix_ring_top
+          shift: [-.5px,.5py]
+        - ref: matrix_ring_top
+          shift: [.5px,.5py]
+        - ref: matrix_middle_top
+          shift: [-.44px,.5py]
+        - ref: matrix_middle_top
+          shift: [.5px,.5py]
+        - ref: matrix_index_top
+          shift: [-.35px,.5py]
+        - ref: matrix_index_top
+          shift: [.5px,.5py]
+        - ref: matrix_inner_top
+          shift: [-.33px,.5py]
+        - ref: matrix_inner_top
+          shift: [1.45px,.5py]
+        - ref: matrix_inner_bottom
+          shift: [1.45px,-.5py]
+        #- ref: thumb_middle_cluster
+        #  shift: [.5px,.5py]
+        - ref: thumb_right_cluster
+          shift: [.5px,.5py]
+        - ref: thumb_right_cluster
+          shift: [.5px,-.5py]
+        - ref: thumb_middle_cluster
+          shift: [.5px,-.5py]
+        - ref: thumb_left_cluster
+          shift: [.5px,-.5py]
+        - ref: thumb_left_cluster
+          shift: [-.5px,-.5py]
+        - ref: matrix_pinky_bottom
+          shift: [.5px,-.5py]
+        - ref: matrix_pinky_bottom
+          shift: [-.25px,-.5py]
+        - ref: matrix_outer_bottom
+          shift: [.4px,-.5py]
+        - ref: matrix_outer_bottom
+          shift: [-.5px,-.5py]
+      fillet: 3
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
+pcbs:
+  main:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          #hotswap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust.shift: [0,-5]
+      MCU:
+        what: seeed_xaio
+        where:
+            ref: matrix_inner_top
+            shift: [.925px,-.06py]
