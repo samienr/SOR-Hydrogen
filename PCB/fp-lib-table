@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "pcbs")(type "KiCad")(uri "/Users/samienr/Developments/SORBoards/SOR-Hydrogen/output/pcbs")(options "")(descr ""))
+)

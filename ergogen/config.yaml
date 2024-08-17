@@ -140,31 +140,45 @@ pcbs:
       main:
         outline: board
     footprints:
-      choc:
-        what: choc
+      switches:
+        what: choc_v2_hotswap
         where: true
         params:
-          keycaps: true
-          reverse: true
-          hotswap: false
-          from: "{{column_net}}"
-          to: "{{colrow}}"
-      choc_hotswap:
-        what: choc
-        where: true
-        params:
-          keycaps: true
           reverse: true
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
-      diode:
-        what: diode
+          outer_pad_width_front: 1.6
+          outer_pad_width_back: 1.6
+          keycaps_x: kx-.5
+          keycaps_y: ky-.5
+          show_keycaps: true
+        adjust:
+          rotate: 180
+      diodes_b:
+        what: combo_diode
         where: true
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
-        adjust.shift: [0,-5]
+          include_tht: false
+          reversible: false
+          side: B
+        adjust:
+          shift: [-7.75,1.5]
+          rotate: -90
+      diodes_f:
+        what: combo_diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          include_tht: false
+          reversible: false
+          side: F
+        adjust:
+          shift: [7.75,1.5]
+          rotate: -90
       MCU:
         what: xiao-ble
         where:

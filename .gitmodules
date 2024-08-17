@@ -1,0 +1,3 @@
+[submodule "ZMK firmware/sorbord-hydrogen-shield"]
+	path = ZMK firmware/sorbord-hydrogen-shield
+	url = https://github.com/samienr/sorbord-hydrogen-shield.git
